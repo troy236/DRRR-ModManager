@@ -1,0 +1,13 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="350" Width="400" Height="350"
+        x:Class="RingRacersModManager.UI.AddonDownloadSelect"
+        Title="AddonDownloadSelect">
+	<Grid>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top">Select file:</Label>
+		<ComboBox Name="FileComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,0,0,0" Width="320"></ComboBox>
+		<Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" Click="Download_Click">Download</Button>
+	</Grid>
+</Window>

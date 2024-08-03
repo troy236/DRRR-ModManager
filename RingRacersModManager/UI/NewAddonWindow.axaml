@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="350" Width="400" Height="350" WindowStartupLocation="CenterOwner"
+        x:Class="RingRacersModManager.UI.NewAddonWindow"
+        Title="New Addon"
+		Icon="/ModManagerIcon.ico">
+	<Grid>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0">Name:</Label>
+		<TextBox Name="AddonName" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="340" Margin="60,0,0,0"></TextBox>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,55,0,0">Author:</Label>
+		<TextBox Name="AddonAuthor" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="340" Margin="60,50,0,0"></TextBox>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,105,0,0">URL:</Label>
+		<TextBox Name="AddonURL" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="340" Margin="60,100,0,0"></TextBox>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,155,0,0">Category:</Label>
+		<ComboBox Name="AddonCategory" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="320" Margin="75,150,0,0">
+			<ComboBoxItem>Map</ComboBoxItem>
+			<ComboBoxItem>Character</ComboBoxItem>
+			<ComboBoxItem>Follower</ComboBoxItem>
+			<ComboBoxItem>Multi_Category</ComboBoxItem>
+			<ComboBoxItem>Lua</ComboBoxItem>
+			<ComboBoxItem>Miscellaneous</ComboBoxItem>
+			<ComboBoxItem>Character_Port</ComboBoxItem>
+			<ComboBoxItem>Lua_Port</ComboBoxItem>
+			<ComboBoxItem>Miscellaneous_Port</ComboBoxItem>
+			<ComboBoxItem>Unknown</ComboBoxItem>
+		</ComboBox>
+		<Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,205,0,0">Version:</Label>
+		<TextBox Name="AddonVersion" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="330" Margin="65,200,0,0"></TextBox>
+		<Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,250,0,0" Click="LocateAddon_Click">Locate Addon</Button>
+		<TextBlock Name="AddonPath"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="120,255,0,0"></TextBlock>
+		<Button Name="AddButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,285,0,0" Click="Add_Click">Add</Button>
+		<Button Name="DoneButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,285,0,0" IsVisible="False" Click="Done_Click">Done</Button>
+	</Grid>
+</Window>

@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	<PublishAot>true</PublishAot>
+	<IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+	<IlcGenerateStackTraceData>true</IlcGenerateStackTraceData>
+	<DebuggerSupport>true</DebuggerSupport>
+	<InvariantGlobalization>true</InvariantGlobalization>
+	<StripSymbols>true</StripSymbols>
+	<EventSourceSupport>false</EventSourceSupport>
+	<HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+	<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+	<AssemblyName>DRRRModManager</AssemblyName>
+	<ApplicationIcon>ModManagerIcon.ico</ApplicationIcon>
+	<Authors>troy236</Authors>
+	<AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <Content Include="ModManagerIcon.ico" />
+	<AvaloniaResource Include="ModManagerIcon.ico" />
+	<RdXmlFile Include="rd.xml" />
+  </ItemGroup>
+
+  <PropertyGroup>
+	<PathMap>$(MSBuildProjectDirectory)=/RRMMsrc</PathMap>
+	<FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Avalonia">
+    <AvaloniaNameGeneratorAttachDevTools>False</AvaloniaNameGeneratorAttachDevTools>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<LinkerArg Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="/MAP:$(PublishDir)$(TargetName)-$(AssemblyVersion).map" />
+	<LinkerArg Condition="$([MSBuild]::IsOSPlatform('osx'))" Include="-Wl,-map,$(PublishDir)$(TargetName)-$(AssemblyVersion).map" />
+	<LinkerArg Condition="!$([MSBuild]::IsOSPlatform('windows')) and !$([MSBuild]::IsOSPlatform('osx'))" Include="-Wl,-Map,$(PublishDir)$(TargetName)-$(AssemblyVersion).map$(_CrossReferences)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.1" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.1" />
+    <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.1" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.1" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.1" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageReference Include="HtmlAgilityPack.CssSelectors.NetCore" Version="1.2.1" />
+    <PackageReference Include="Markdown.Avalonia.SyntaxHigh" Version="11.0.2" />
+    <PackageReference Include="MessageBox.Avalonia" Version="3.1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UI\ModManagerWindow.axaml.cs">
+      <DependentUpon>ModManagerWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="UI\NewAddonWindow.axaml" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:RingRacersModManager.UI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="750" d:DesignHeight="650" Width="750" Height="650" WindowStartupLocation="CenterScreen"
+		x:CompileBindings="True"
+		x:DataType="vm:ModManagerWindowViewModel"
+        x:Class="RingRacersModManager.UI.ModManagerWindow"
+        Title="Ring Racers Mod Manager "
+		Loaded="ModManagerWindow_Loaded"
+		SizeChanged="ModManagerWindow_SizeChanged"
+		Icon="/ModManagerIcon.ico">
+	<Design.DataContext>
+		<vm:ModManagerWindowViewModel/>
+	</Design.DataContext>
+	<Grid>
+		<TabControl x:Name="MainTabControl" Margin="0,0,0,0" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+			<TabItem Header="Addons" FontSize="16">
+				<DockPanel>
+					<TreeDataGrid Name="AddonsGrid" DockPanel.Dock="Top" Source="{Binding GridSource}" ShowColumnHeaders="True" CanUserResizeColumns="True" IsHitTestVisible="True">
+						<TreeDataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Add" Click="NewAddon_Click"/>
+								<MenuItem Header="Edit" Click="EditAddon_Click"/>
+								<MenuItem Header="Delete" Click="DeleteAddon_Click"/>
+							</ContextMenu>
+						</TreeDataGrid.ContextMenu>
+					</TreeDataGrid>
+					<Button VerticalAlignment="Bottom" Content="Save" Click="SaveButton_Click"/>
+					<Button Margin="5,0,0,0" Content="Update Message Board data" Click="UpdateMessageBoardButton_Click" />
+					<Button Margin="5,0,0,0" Content="Update Addons" Click="UpdateAddonsButton_Click"/>
+					<Button Name="LoadAddonsButton" Margin="5,0,0,0" Content="Load Addons" Click="LoadAddonsButton_Click"/>
+					<Button Margin="5,0,0,0" Content="New Addon" Click="NewAddon_Click"/>
+					<Button Margin="5,0,0,0" Content="Launch Game" Click="LaunchGame_Click"/>
+				</DockPanel>
+			</TabItem>
+			<TabItem Header="Options" FontSize="16">
+				<Grid Height="500">
+					<Label VerticalAlignment="Top" Content="Theme"/>
+					<Button VerticalAlignment="Top" Margin="0,30,0,0" Content="Dark mode" Click="DarkModeButton_Click"/>
+					<Button VerticalAlignment="Top" Margin="95,30,0,0" Content="Light mode" Click="LightModeButton_Click"/>
+					<Label VerticalAlignment="Top" Margin="0,70,0,0" Content="Updates"/>
+					<CheckBox IsCheckedChanged="AppStartup_IsCheckedChanged" VerticalAlignment="Top" Margin="0,100,0,0" IsChecked="True" Content="Check on startup"/>
+					<CheckBox IsCheckedChanged="AddonStartup_IsCheckedChanged" VerticalAlignment="Top" Margin="155,100,0,0" IsChecked="True" Content="Check addons on startup"/>
+					<Button VerticalAlignment="Top" Margin="0,140,0,0" Content="Check now" Click="AppUpdateCheck_Click"/>
+					<Button VerticalAlignment="Top" Margin="0,180,0,0" Content="Toggle 1-Click Install"/>
+					<Button VerticalAlignment="Top" Margin="0,220,0,0" Content="Set Ring Racers Path" Click="SetRingRacersPath_Click"/>
+					<Button VerticalAlignment="Top" Margin="0,260,0,0" Content="Run Addon Detection" Click="RunAddonDetection_Click"/>
+				</Grid>
+			</TabItem>
+		</TabControl>
+		
+	</Grid>
+</Window>
